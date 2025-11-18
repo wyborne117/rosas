@@ -1,223 +1,100 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Artesanias y Manualidades... Mama Rosa</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artesanías de mi Madre</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- FontAwesome para iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Comic Neue desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'Castlevania';
-      src: url('fuentes/castlevania.ttf') format('truetype');
-    }
-
-    @font-face {
-      font-family: "Alternativa";
-      src: url("fuentes/otra-simil.ttf") format("truetype");
-    }
-
     body {
-      background: linear-gradient(to bottom, #a0c4ff, #bde0fe);
-      color: #fafafa;
-      font-family: "Alternativa", sans-serif;
-      margin: 0;
-      padding: 0;
+      background-color: #ffe6f0; /* rosado suave */
+      font-family: 'Comic Neue', cursive;
     }
-
-    h1.castlevania {
-      font-family: "Castlevania", serif;
-      text-align: center;
-      padding: 30px;
-      color: #fff;
-      text-shadow: 2px 2px 4px #333;
+    header {
+      background-color: #ff99cc;
     }
-
-    nav {
-      text-align: center;
-      margin-bottom: 30px;
+    footer {
+      background-color: #cc6699;
     }
-
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #ffe066;
-      font-weight: bold;
-      font-size: 18px;
+    footer a {
+      color: white;
     }
-
-    .carrusel-container {
-      position: relative;
-      max-width: 90%;
-      margin: 40px auto;
+    footer a:hover {
+      color: #ffccff;
     }
-
-    .carrusel {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 20px;
-      padding: 30px;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      scroll-behavior: smooth;
-    }
-
-    .carrusel img {
-      width: 300px;
-      height: auto;
+    .gallery img {
+      height: 300px;
       object-fit: cover;
-      scroll-snap-align: center;
-      border: 10px solid #5a4a2c;
-      border-image: url("imagenes/marco-antiguo.png") 30 round;
-      border-radius: 6px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-      background-color: #f5f0e6;
-      padding: 4px;
-      transition: transform 0.3s ease;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-
-    .carrusel img:hover {
-      transform: scale(1.05);
-    }
-
-    .flecha {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(0,0,0,0.5);
-      color: #fff;
-      border: none;
-      font-size: 24px;
-      padding: 10px;
-      cursor: pointer;
-      z-index: 10;
-      border-radius: 50%;
-    }
-
-    .flecha.izquierda {
-      left: -10px;
-    }
-
-    .flecha.derecha {
-      right: -10px;
-    }
-
-    .redes {
-      text-align: center;
-      margin: 50px 0;
-    }
-
-    .redes a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #ffcc66;
-      font-size: 18px;
-    }
-      
-    .redes p {
-    color: #000000;
-    font-size: 18px;
-    margin: 5px 0;
-    }
-
-
-    .logo-flotante {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 999;
-    }
-
-    .logo-flotante img {
-      width: 80px;
-      animation: flotar 4s ease-in-out infinite;
-    }
-
-    @keyframes flotar {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(15px); }
+    .gallery p {
+      margin-top: 0.5rem;
+      font-weight: bold;
     }
   </style>
-  <script>
-    function moverCarrusel(id, direccion) {
-      const carrusel = document.getElementById(id);
-      const desplazamiento = direccion === 'izquierda' ? -300 : 300;
-      carrusel.scrollBy({ left: desplazamiento, behavior: 'smooth' });
-    }
-
-    function autoDesplazarInfinito(id) {
-      const carrusel = document.getElementById(id);
-      setInterval(() => {
-        const maxScroll = carrusel.scrollWidth - carrusel.clientWidth;
-        const actualScroll = carrusel.scrollLeft;
-
-        if (actualScroll >= maxScroll - 10) {
-          carrusel.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          carrusel.scrollBy({ left: 300, behavior: 'smooth' });
-        }
-      }, 30000);
-    }
-
-    window.onload = () => {
-      autoDesplazarInfinito('carrusel1');
-      autoDesplazarInfinito('carrusel2');
-    };
-  </script>
 </head>
 <body>
-  <div class="logo-flotante">
-    <img src="logo memi.png" alt="Logo" />
+
+<!-- Encabezado -->
+<header class="text-center py-5 text-white">
+  <h1 class="display-4">Artesanías mama Rosa</h1>
+  <p class="lead">Hechas con amor, dedicación y creatividad</p>
+</header>
+
+<!-- Galería de imágenes en rejilla -->
+<div class="container my-5 gallery">
+  <div class="row text-center">
+    <div class="col-md-4 mb-4">
+      <img src="flor%2090.jpg" alt="Flores tegidas" class="img-fluid">
+      <p>Flores tegidas</p>
+    </div>
+    <div class="col-md-4 mb-4">
+      <img src="flor%2045.jpg" alt="jabones caceros" class="img-fluid">
+      <p>jabones caceros</p>
+    </div>
+      <div class="col-md-4 mb-4">
+      <img src="flor%2045.jpg" alt="velas aromaticas" class="img-fluid">
+      <p>velas aromaticas</p>
+    </div>
+      <div class="col-md-4 mb-4">
+      <img src="flor%2078.jpg" alt="girasoles" class="img-fluid">
+      <p>girasoles</p>
+    </div>
+      <div class="col-md-4 mb-4">
+      <img src="flores%201.jpg" alt="Tulipanes" class="img-fluid">
+      <p>Tulipanes</p>
+    </div>
+      <div class="col-md-4 mb-4">
+      <img src="flores%202.jpg" alt="lapiceros" class="img-fluid">
+      <p>lapiceros</p>
+    </div>
+      <div class="col-md-4 mb-4">
+      <img src="jabones.jpg" alt="manualidades" class="img-fluid">
+      <p>manualidades</p>
+    </div>
+    <div class="col-md-4 mb-4">
+      <img src="flor%2021.jpg" alt="flores tegidas" class="img-fluid">
+      <p>flores tegidas</p>
+    </div>
   </div>
-
-  <header>
-    <h1 class="castlevania">Artesanias y Manualidades... Mama Rosa</h1>
-    <nav>
-      <a href="#artefactos">Manualidades</a>
-      <a href="#reliquias">confecciones</a>
-    </nav>
-  </header>
-
-  <main>
-    <!-- Artefactos -->
-    <div class="carrusel-container" id="artefactos">
-      <button class="flecha izquierda" onclick="moverCarrusel('carrusel1', 'izquierda')">←</button>
-      <button class="flecha derecha" onclick="moverCarrusel('carrusel1', 'derecha')">→</button>
-      <section class="carrusel" id="carrusel1">
-        <img src="flor%203.jpg" alt="Artefacto 1">
-        <img src="flores%201.jpg" alt="Artefacto 2">
-        <img src="jabones.jpg" alt="Artefacto 3">
-        <img src="flor 21.jpg" alt="Artefacto 4">
-        <img src="flores.jpg" alt="Artefacto 5">
-        <img src="tulipanes 1.jpg" alt="Artefacto 6">
-        <img src="gorro%202.jpg" alt="Artefacto 7">
-        <img src="gorro%201.jpg" alt="Artefacto 8">
-        <img src="flor 11.jpg" alt="Artefacto 9">
-      </section>
-    </div>
-
-    <!-- Reliquias -->
-    <div class="carrusel-container" id="reliquias">
-      <button class="flecha izquierda" onclick="moverCarrusel('carrusel2', 'izquierda')">←</button>
-      <button class="flecha derecha" onclick="moverCarrusel('carrusel2', 'derecha')">→</button>
-      <section class="carrusel" id="carrusel2">
-        <img src="velas 11.jpg" alt="Reliquia 1">
-        <img src="velas 21.jpg" alt="Reliquia 2">
-        <img src="velas 31.jpg" alt="Reliquia 3">
-        <img src="velas 41.jpg" alt="Reliquia 4">
-        <img src="flor 21.jpg" alt="Reliquia 5">
-        <img src="petalos 1.jpg" alt="Reliquia 6">
-      </section>
-    </div>
-
-    <!-- Redes sociales -->
-<div class="redes">
-  <img src="wqr.jpg" alt="Icono de contacto" style="width: 100px; margin-bottom: 10px;">
-  <p>WhatsApp: +50377472446</p>
-  <p>Correo: artesanillasymas@gmail.com</p>
 </div>
 
+<!-- Redes sociales -->
+<footer class="text-center py-4 text-white mt-5">
+  <h5>Síguenos en redes sociales</h5>
+  <a href="https://www.facebook.com/share/1AM6MaYN5s/" class="mx-2"><i class="fab fa-facebook fa-2x"></i></a>
+  <a href="https://wa.me/50377472446" class="mx-2"><i class="fab fa-whatsapp fa-2x"></i></a>
+</footer>
 
-  </main>
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
-
